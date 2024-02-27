@@ -17,6 +17,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import LightModeIcon from '@mui/icons-material/LightMode';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   flex: 1;
@@ -52,7 +53,7 @@ const Item = styled.div`
 
 const Divider = styled.hr`
   margin: 15px 0px;
-  border: 0.5px solid ${( {theme} ) => theme.soft};;
+  border: 0.5px solid ${( {theme} ) => theme.soft};
 `;
 
 const Login = styled.div``;
@@ -81,10 +82,12 @@ const Menu = ({darkMode, setDarkMode}) => {
   return (
     <Container>
       <Wrapper>
+      <Link to="/" style={{textDecoration: "none", color: "inherit"}}>
         <Logo>
           <Img src={FireTube} />
           FireTube
         </Logo>
+       </Link>
         <Item><HomeIcon /> Home </Item>
         <Item><ExploreOutlinedIcon /> Explore </Item>
         <Item><SubscriptionsOutlinedIcon /> Subscriptions </Item>
@@ -107,7 +110,7 @@ const Menu = ({darkMode, setDarkMode}) => {
         <Item><SettingsOutlinedIcon /> Settings </Item>
         <Item><FlagOutlinedIcon /> Report </Item>
         <Item><HelpOutlineOutlinedIcon /> Help </Item>
-        <Item onClick={() => setDarkMode(!darkMode)}><LightModeIcon /> Light Mode </Item> 
+        <Item onClick={() => setDarkMode(!darkMode)}><LightModeIcon /> Light Mode </Item>
       </Wrapper>
     </Container>
   );
