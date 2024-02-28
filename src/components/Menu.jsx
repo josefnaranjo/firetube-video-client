@@ -48,7 +48,10 @@ const Item = styled.div`
   align-items: center;
   gap: 20px;
   cursor: pointer;
+  transition: all .3s ease;
   padding: 7.5px 0px;
+  &:hover {
+    background-color: ${( {theme} ) => theme.soft}};
 `;
 
 const Divider = styled.hr`
@@ -95,8 +98,10 @@ const Menu = ({darkMode, setDarkMode}) => {
         <Item><VideoLibraryOutlinedIcon /> Library </Item>
         <Item><HistoryOutlinedIcon /> History </Item>
         <Divider />
-        <Login> Sign in to like videos, comment, and subscribe. 
-          <Button><AccountCircleOutlinedIcon /> SIGN IN </Button>
+        <Login> Sign in to like videos, comment, and subscribe.
+          <Link to="signin" style={{textDecoration: "none"}}>
+            <Button><AccountCircleOutlinedIcon /> SIGN IN </Button>
+          </Link> 
         </Login>
         <Divider />
         <Title>BEST OF FIRETUBE</Title>
@@ -110,7 +115,7 @@ const Menu = ({darkMode, setDarkMode}) => {
         <Item><SettingsOutlinedIcon /> Settings </Item>
         <Item><FlagOutlinedIcon /> Report </Item>
         <Item><HelpOutlineOutlinedIcon /> Help </Item>
-        <Item onClick={() => setDarkMode(!darkMode)}><LightModeIcon /> Light Mode </Item>
+        <Item onClick={() => setDarkMode(!darkMode)}><LightModeIcon /> {darkMode ? "Light" : "Dark"} Mode </Item>
       </Wrapper>
     </Container>
   );
