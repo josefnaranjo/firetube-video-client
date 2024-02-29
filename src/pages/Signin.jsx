@@ -63,7 +63,7 @@ const Link = styled.span`
   margin-left: 30px;
 `;
 
-const Signin = () => {
+const SignIn = () => {
   return (
     <Container>
       <Wrapper>
@@ -90,4 +90,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default SignIn
