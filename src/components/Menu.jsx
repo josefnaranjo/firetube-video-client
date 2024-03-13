@@ -18,6 +18,7 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   flex: 1;
@@ -82,6 +83,7 @@ const Title = styled.h2`
 `;
 
 const Menu = ({darkMode, setDarkMode}) => {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <Container>
       <Wrapper>
@@ -91,19 +93,23 @@ const Menu = ({darkMode, setDarkMode}) => {
           FireTube
         </Logo>
        </Link>
-        <Item><HomeIcon /> Home </Item>
-        <Item><ExploreOutlinedIcon /> Explore </Item>
-        <Item><SubscriptionsOutlinedIcon /> Subscriptions </Item>
+        <Link to="/" style={{textDecoration: "none", color: "inherit"}}><Item><HomeIcon /> Home </Item></Link>
+        <Link to="trends" style={{textDecoration: "none", color: "inherit"}}><Item><ExploreOutlinedIcon /> Explore </Item></Link>
+        <Link to="subscriptions" style={{textDecoration: "none", color: "inherit"}}><Item><SubscriptionsOutlinedIcon /> Subscriptions </Item></Link>
         <Divider />
         <Item><VideoLibraryOutlinedIcon /> Library </Item>
         <Item><HistoryOutlinedIcon /> History </Item>
         <Divider />
-        <Login> Sign in to like videos, comment, and subscribe.
-          <Link to="signin" style={{textDecoration: "none"}}>
-            <Button><AccountCircleOutlinedIcon /> SIGN IN </Button>
-          </Link> 
-        </Login>
-        <Divider />
+        { !currentUser && 
+          <>
+            <Login> Sign in to like videos, comment, and subscribe.
+              <Link to="signin" style={{textDecoration: "none"}}>
+                <Button><AccountCircleOutlinedIcon /> SIGN IN </Button>
+              </Link> 
+            </Login>
+            <Divider />
+          </>
+        }
         <Title>BEST OF FIRETUBE</Title>
         <Item><LibraryMusicOutlinedIcon /> Music </Item>
         <Item><SportsSoccerIcon /> Sports</Item>
